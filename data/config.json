@@ -1,0 +1,12 @@
+{
+    "ffmpegPath": "C:/Python36/python.exe",
+    "inputPath": "",
+    "outputPath": "",
+    "codec": "",
+    "resolution": "",
+    "frameRate": "",
+    "colorspace": "",
+    "slate": true,
+    "burn-in": true,
+    "note": ""
+}
