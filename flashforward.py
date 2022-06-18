@@ -20,9 +20,10 @@ class Flashforward(object):
         '''
 
         # config
-        self.__toolRootDir = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+        self.__toolRootDir = os.path.abspath(os.path.dirname(__file__))
         self.__configPath = os.path.normpath(os.path.join(self.__toolRootDir, 'data/config.json'))
         self.__parametersPath = os.path.normpath(os.path.join(self.__toolRootDir, 'data/parameters.json'))
+        self.__slatePath = os.path.normpath(os.path.join(self.__toolRootDir, 'data/slate.png'))
 
         self.__setupConfig()
 
@@ -196,6 +197,50 @@ class Flashforward(object):
         #    qTableWidget.removeRow(row)
 
 
+    ###########
+    # METHODS #
+    ###########
+
+
+    def __createSlate(self, imagePath, textPath, outputPath):
+        fontPath = r'C\\://WINDOWS/Fonts/arial.ttf'
+        textPath = r'E\\://pepepe//slate.txt'
+
+        filterComplex = '[1:v]'
+        filterComplex += 'scale=640:360,'
+        #filterComplex += 'colorspace=bt709,'##########
+        filterComplex += 'format=yuv420p'
+        filterComplex += '[overlay];'
+
+        filterComplex += '[0:v][overlay]'
+        filterComplex += 'overlay=1185:100'
+        filterComplex += '[output];'
+
+        filterComplex += '[output]'
+        filterComplex += 'drawtext='
+        filterComplex += 'fontfile=%s:' % fontPath
+        filterComplex += 'textfile="%s":' % textPath
+        filterComplex += 'fontcolor=white:'
+        filterComplex += 'fontsize=35:'
+        filterComplex += 'line_spacing=70:'
+        filterComplex += 'x=250:y=110'
+
+        cmd = ''
+        cmd += '%s ' % ffmpegPath
+        cmd += '-i %s ' % slatePath
+        cmd += '-i %s ' % imagePath
+        cmd += '-filter_complex "%s" ' % filterComplex
+        cmd += '%s' % outputPath
+
+        print(cmd)
+
+        if os.path.exists(outputPath):
+            os.remove(outputPath)
+
+        startupinfo = subprocess.STARTUPINFO()
+        startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        startupinfo.wShowWindow = subprocess.SW_HIDE
+        subprocess.Popen(cmd, startupinfo=startupinfo)
 
 
     ########
