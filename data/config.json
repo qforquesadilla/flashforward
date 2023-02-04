@@ -1,0 +1,12 @@
+{
+    "ffmpegDir": "U:/dev/tool/ffmpeg/bin",
+    "inputPath": "",
+    "outputPath": "",
+    "codec": "",
+    "resolution": "",
+    "frameRate": "",
+    "colorspace": "",
+    "slate": true,
+    "burn-in": true,
+    "note": ""
+}

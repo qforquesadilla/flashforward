@@ -1,0 +1,18 @@
+{
+    "codec": {
+            "nameA": "paramA",
+            "nameB": "paramB"
+    },
+    "colorspace": {
+        "nameA": "paramA",
+        "nameB": "paramB"
+    },
+    "frameRate": {
+        "nameA": "paramA",
+        "nameB": "paramB"
+    },
+    "resolution": {
+        "nameA": "paramA",
+        "nameB": "paramB"
+    }
+}
