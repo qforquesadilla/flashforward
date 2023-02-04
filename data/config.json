@@ -1,5 +1,5 @@
 {
-    "ffmpegPath": "C:/Python36/python.exe",
+    "ffmpegDir": "U:/dev/tool/ffmpeg/bin",
     "inputPath": "",
     "outputPath": "",
     "codec": "",

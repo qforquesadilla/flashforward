@@ -17,6 +17,7 @@ class Flashforward(object):
 
     def __init__(self):
         '''
+        TBA
         '''
 
         # config
@@ -42,6 +43,7 @@ class Flashforward(object):
 
     def __setupConfig(self):
         '''
+        TBA
         '''
 
         # load json
@@ -50,13 +52,14 @@ class Flashforward(object):
 
         # restore values
         ffmpegDir = configData.get('ffmpegDir', None)
-        self.__ffmpegPath = os.path.normpath(os.path.join(self.__toolRootDir, 'bin/ffmpeg.exe'))
-        self.__ffplayPath = os.path.normpath(os.path.join(self.__toolRootDir, 'bin/ffplay.exe'))
-        self.__ffprobePath = os.path.normpath(os.path.join(self.__toolRootDir, 'bin/ffprobe.exe'))
+        self.__ffmpegPath = os.path.normpath(os.path.join(ffmpegDir, 'ffmpeg.exe'))
+        self.__ffplayPath = os.path.normpath(os.path.join(ffmpegDir, 'ffplay.exe'))
+        self.__ffprobePath = os.path.normpath(os.path.join(ffmpegDir, 'ffprobe.exe'))
 
 
     def __setParameters(self):
         '''
+        TBA
         '''
 
         # load json
@@ -78,6 +81,7 @@ class Flashforward(object):
 
     def __buildUi(self):
         '''
+        TBA
         '''
 
         # define ui file paths
@@ -95,6 +99,7 @@ class Flashforward(object):
 
     def __linkCommands(self):
         '''
+        TBA
         '''
 
         # main ui
@@ -120,6 +125,10 @@ class Flashforward(object):
 
 
     def __onRunPressed(self):
+        '''
+        TBA
+        '''
+
         mode = self.__getMode()
         inputPath = self.__getLineEdit(self.__mainUi.inputLE)
         outputPath = self.__getLineEdit(self.__mainUi.outputLE)
@@ -140,10 +149,25 @@ class Flashforward(object):
         print(slate)
         print(note)
 
+        if mode == 'play':
+            cmd = self.__ffplayPath + ' ' + inputPath + ' -autoexit -alwaysontop'
+ 
+            print(cmd)
+
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = subprocess.SW_HIDE
+            subprocess.Popen(cmd, startupinfo=startupinfo)
+
+        # TODO: Support other two modes
+
 
     def __onChangeMode(self, qPushButton):
+        '''
+        TBA
+        '''
+
         objectName = qPushButton.objectName()
-        
         styleSheetOn = 'background-color: #E4EAA0; color: #313333'
         styleSheetOff = 'background-color: #313333; color: #f8f8f8;'
         
@@ -164,6 +188,10 @@ class Flashforward(object):
 
 
     def __onSetPath(self, qLineEdit):
+        '''
+        TBA
+        '''
+
         objectName = qLineEdit.objectName()
 
         if objectName == 'ffmpegLE':
@@ -181,16 +209,28 @@ class Flashforward(object):
 
 
     def onSlateClicked(self):
+        '''
+        TBA
+        '''
+
         pass
         # TODO: Show preview of slate image here
 
 
     def __onAddQueuePressed(self, qListWidget):
+        '''
+        TBA
+        '''
+
         print(qListWidget)
         #qTableWidget.insertRow(0)
 
 
     def __onRemoveQueuePressed(self, qListWidget):
+        '''
+        TBA
+        '''
+
         print(qListWidget)
         #row = qTableWidget.currentRow()
         #if row != -1:
@@ -203,6 +243,10 @@ class Flashforward(object):
 
 
     def __createSlate(self, imagePath, textPath, outputPath):
+        '''
+        TBA
+        '''
+
         fontPath = r'C\\://WINDOWS/Fonts/arial.ttf'
         textPath = r'E\\://pepepe//slate.txt'
 
@@ -226,8 +270,8 @@ class Flashforward(object):
         filterComplex += 'x=250:y=110'
 
         cmd = ''
-        cmd += '%s ' % ffmpegPath
-        cmd += '-i %s ' % slatePath
+        cmd += '%s ' % self.__ffmpegPath
+        cmd += '-i %s ' % self.__slatePath
         cmd += '-i %s ' % imagePath
         cmd += '-filter_complex "%s" ' % filterComplex
         cmd += '%s' % outputPath
@@ -247,39 +291,84 @@ class Flashforward(object):
     # MISC #
     ########
 
+
     def __getMode(self):
+        '''
+        TBA
+        '''
+
         for qPushButton in [self.__mainUi.renderPBT, self.__mainUi.playPBT, self.__mainUi.probePBT]:
             if '#E4EAA0' in qPushButton.styleSheet():
                 return qPushButton.objectName().replace('PBT', '')
 
+
     def __getLineEdit(self, qLineEdit):
+        '''
+        TBA
+        '''
+
         return qLineEdit.text()
 
+
     def __setLineEdit(self, qLineEdit, value):
+        '''
+        TBA
+        '''
+
         return qLineEdit.setText(value)
 
+
     def __getComboBox(self, qComboBox):
+        '''
+        TBA
+        '''
+
         return qComboBox.currentText()
 
+
     def __setComboBox(self, qComboBox, value):
+        '''
+        TBA
+        '''
+
         return qComboBox.setCurrentText(value)
 
+
     def __addComboBox(self, qComboBox, items):
+        '''
+        TBA
+        '''
+
         for item in items:
             qComboBox.addItem(item)
         return items
 
+
     def __getCheckBox(self, qCheckBox):
+        '''
+        TBA
+        '''
+
         return qCheckBox.isChecked()
 
+
     def __setCheckBox(self, qCheckBox, bool):
+        '''
+        TBA
+        '''
+
         return qCheckBox.setChecked(bool)
 
+
     def __getTextEdit(self, qTextEdit):
+        '''
+        TBA
+        '''
+
         return qTextEdit.toPlainText()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     Flashforward()
 
 

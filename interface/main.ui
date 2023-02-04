@@ -892,13 +892,13 @@ QListWidget::item:selected
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>5</height>
+         <height>15</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>10</height>
+         <height>15</height>
         </size>
        </property>
        <property name="font">
@@ -910,7 +910,7 @@ QListWidget::item:selected
         <string notr="true">color: #a6a6a6;</string>
        </property>
        <property name="text">
-        <string>© 2021 Q for Quesadilla. All Rights Reserved.</string>
+        <string>© 2023 Q for Quesadilla. All Rights Reserved.</string>
        </property>
       </widget>
      </item>
