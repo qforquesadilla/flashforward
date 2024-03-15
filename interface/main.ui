@@ -910,7 +910,7 @@ QListWidget::item:selected
         <string notr="true">color: #a6a6a6;</string>
        </property>
        <property name="text">
-        <string>© 2023 Q for Quesadilla. All Rights Reserved.</string>
+        <string>© 2024 Q for Quesadilla. All Rights Reserved.</string>
        </property>
       </widget>
      </item>

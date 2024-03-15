@@ -287,6 +287,14 @@ class Flashforward(object):
         subprocess.Popen(cmd, startupinfo=startupinfo)
 
 
+    def __createContactSheet(self):
+        '''
+        Get images from given .edl and movie, and create a movie showing all thumbnails (for FFprobe?)
+        '''
+
+        pass
+
+
     ########
     # MISC #
     ########
